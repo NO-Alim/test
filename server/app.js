@@ -47,7 +47,7 @@ app.use('/api/message', messageRoute);
 
 //static or public route
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
 
 // 404 handler
