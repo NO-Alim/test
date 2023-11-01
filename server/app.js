@@ -33,11 +33,11 @@ app.use(
 //
 app.use(express.json());
 
-// app.use(
-//   express.urlencoded({
-//     extended: false,
-//   })
-// );
+app.use(
+  express.urlencoded({
+    extended: false,
+  })
+);
 
 // cookie parser
 app.use(cookieParser(process.env.COOKIE_SECRET));
@@ -47,6 +47,7 @@ app.use('/api/', loginRouter);
 app.use('/api/friend', friendsRoute);
 app.use('/api/message', messageRoute);
 
+app.use(express.static(path.join(__dirname, 'client', 'build')));
 //static or public route
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
