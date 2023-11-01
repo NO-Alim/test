@@ -17,6 +17,8 @@ const port = process.env.PORT || 8000;
 // connect to database
 connectDB();
 
+const __dirname = path.resolve();
+
 // init app
 const app = express();
 
@@ -31,11 +33,11 @@ app.use(
 //
 app.use(express.json());
 
-app.use(
-  express.urlencoded({
-    extended: false,
-  })
-);
+// app.use(
+//   express.urlencoded({
+//     extended: false,
+//   })
+// );
 
 // cookie parser
 app.use(cookieParser(process.env.COOKIE_SECRET));
@@ -47,7 +49,7 @@ app.use('/api/message', messageRoute);
 
 //static or public route
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
 
 // 404 handler
