@@ -11,7 +11,6 @@ import Register from './pages/Register';
 import PageNotFound from './pages/PageNotFound';
 
 function App() {
-  console.log(process.env.REACT_APP_SERVER_URL);
   const authChecked = useAuthCheck();
   return !authChecked ? (
     <div>Loading.....</div>
