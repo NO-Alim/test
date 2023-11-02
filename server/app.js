@@ -23,7 +23,7 @@ const app = express();
 // cors allow
 app.use(
   cors({
-    origin: true,
+    origin: 'https://test-ts4k.onrender.com',
     credentials: true,
   })
 );
