@@ -17,8 +17,6 @@ const port = process.env.PORT || 8000;
 // connect to database
 connectDB();
 
-const __dirname = path.resolve();
-
 // init app
 const app = express();
 

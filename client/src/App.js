@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 
 function App() {
+  console.log(process.env.REACT_APP_SERVER_URL);
   const authChecked = useAuthCheck();
   return !authChecked ? (
     <div>Loading.....</div>

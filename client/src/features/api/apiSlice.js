@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { userLoggedOut } from '../auth/authSlice';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:8000/api/',
+  baseUrl: process.env.REACT_APP_SERVER_URL,
   prepareHeaders: async (headers, { getState, endpoint }) => {
     return headers;
   },
