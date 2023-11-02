@@ -45,10 +45,10 @@ app.use('/api/', loginRouter);
 app.use('/api/friend', friendsRoute);
 app.use('/api/message', messageRoute);
 
-app.use(express.static(path.join(__dirname, 'client', 'build')));
+app.use(express.static(path.join(__dirname, '../client', 'build')));
 //static or public route
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, '../client', 'build', 'index.html'));
 });
 
 // 404 handler
