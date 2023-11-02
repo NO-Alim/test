@@ -59,6 +59,7 @@ function App() {
               </PublicRoute>
             }
           />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Router>
     </div>
