@@ -8,6 +8,7 @@ import Message from './pages/Message';
 import PublicRoute from './components/routeGard/PublicRoute';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import PageNotFound from './pages/PageNotFound';
 
 function App() {
   console.log(process.env.REACT_APP_SERVER_URL);
@@ -60,6 +61,7 @@ function App() {
             }
           />
         </Routes>
+        <Route path="*" element={<PageNotFound />} />
       </Router>
     </div>
   );
