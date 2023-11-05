@@ -31,9 +31,7 @@ app.use(
 app.use(function (req, res, next) {
   //content-type
   const acceptHeader = req.get('Accept');
-  if (acceptHeader && acceptHeader.includes('text/html')) {
-    // set inside  static page
-  } else {
+  if (acceptHeader && acceptHeader.includes('application/json')) {
     res.header('Content-Type', 'application/json;charset=UTF-8');
   }
   //
