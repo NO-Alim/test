@@ -4,6 +4,7 @@ import { userLoggedOut } from '../auth/authSlice';
 const baseQuery = fetchBaseQuery({
   baseUrl: process.env.REACT_APP_SERVER_URL,
   prepareHeaders: async (headers, { getState, endpoint }) => {
+    headers.set('content-type', 'application/json');
     return headers;
   },
   credentials: 'include',
