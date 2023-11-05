@@ -67,6 +67,7 @@ app.use('/api/message', messageRoute);
 app.use(express.static(path.join(__dirname, '../client', 'build')));
 //static or public route
 app.get('*', (req, res) => {
+  res.header('Content-Type', 'text/html;charset=UTF-8');
   res.sendFile(path.join(__dirname, '../client', 'build', 'index.html'));
 });
 
