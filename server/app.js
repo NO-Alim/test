@@ -29,7 +29,14 @@ app.use(
 );
 
 app.use(function (req, res, next) {
-  res.header('Content-Type', 'application/json;charset=UTF-8');
+  //content-type
+  const acceptHeader = req.get('Accept');
+  if (acceptHeader && acceptHeader.includes('text/html')) {
+    res.header('Content-Type', 'text/html;charset=UTF-8');
+  } else {
+    res.header('Content-Type', 'application/json;charset=UTF-8');
+  }
+  //
   res.header('Access-Control-Allow-Credentials', true);
   res.header(
     'Access-Control-Allow-Headers',
@@ -60,7 +67,6 @@ app.use('/api/message', messageRoute);
 app.use(express.static(path.join(__dirname, '../client', 'build')));
 //static or public route
 app.get('*', (req, res) => {
-  res.header('Content-Type', 'text/html;charset=UTF-8');
   res.sendFile(path.join(__dirname, '../client', 'build', 'index.html'));
 });
 
