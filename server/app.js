@@ -27,11 +27,26 @@ app.use(
     credentials: true,
   })
 );
+//
+app.use(express.json());
+
+app.use(
+  express.urlencoded({
+    extended: false,
+  })
+);
+
+//static or public route
+app.use(express.static(path.join(__dirname, '../client', 'build')));
+// response header
 
 app.use(function (req, res, next) {
   //content-type
   const acceptHeader = req.get('Accept');
-  if (acceptHeader && acceptHeader.includes('application/json')) {
+
+  if (acceptHeader && acceptHeader.includes('text/html')) {
+    res.header('Content-Type', 'text/html;charset=UTF-8');
+  } else {
     res.header('Content-Type', 'application/json;charset=UTF-8');
   }
   //
@@ -43,17 +58,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-// response header
-
-//
-app.use(express.json());
-
-app.use(
-  express.urlencoded({
-    extended: false,
-  })
-);
-
 // cookie parser
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
@@ -62,10 +66,7 @@ app.use('/api/', loginRouter);
 app.use('/api/friend', friendsRoute);
 app.use('/api/message', messageRoute);
 
-app.use(express.static(path.join(__dirname, '../client', 'build')));
-//static or public route
 app.get('*', (req, res) => {
-  res.header('Content-Type', 'text/html;charset=UTF-8');
   res.sendFile(path.join(__dirname, '../client', 'build', 'index.html'));
 });
 
